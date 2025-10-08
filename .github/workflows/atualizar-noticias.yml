@@ -1,0 +1,60 @@
+name: Atualizar Notícias Automaticamente
+
+on:
+  schedule:
+    # Executar todos os dias às 08:00 UTC (05:00 Brasília)
+    - cron: '0 8 * * *'
+  workflow_dispatch: # Permitir execução manual
+
+jobs:
+  atualizar-noticias:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install openai
+      
+      - name: Buscar novas notícias
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          cd $GITHUB_WORKSPACE
+          python scripts/buscar_noticias.py
+      
+      - name: Verificar se houve alterações
+        id: verify_diff
+        run: |
+          git diff --quiet src/data/noticias.js || echo "changed=true" >> $GITHUB_OUTPUT
+      
+      - name: Commit e push das alterações
+        if: steps.verify_diff.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/data/noticias.js
+          git commit -m "🤖 Atualização automática de notícias - $(date +'%d/%m/%Y %H:%M')"
+          git push
+      
+      - name: Notificar sucesso
+        if: steps.verify_diff.outputs.changed == 'true'
+        run: |
+          echo "✅ Notícias atualizadas com sucesso!"
+          echo "📅 Data: $(date +'%d/%m/%Y %H:%M:%S')"
+      
+      - name: Notificar sem alterações
+        if: steps.verify_diff.outputs.changed != 'true'
+        run: |
+          echo "ℹ️  Nenhuma notícia nova encontrada"
+          echo "📅 Data: $(date +'%d/%m/%Y %H:%M:%S')"
