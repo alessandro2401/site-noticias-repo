@@ -1,0 +1,12 @@
+{
+  "crons": [
+    {
+      "path": "/api/buscar-noticias",
+      "schedule": "0 14 * * *"
+    }
+  ],
+  "env": {
+    "OPENAI_API_KEY": "@openai-api-key"
+  }
+}
+
