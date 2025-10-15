@@ -1,5 +1,48 @@
+// Notícias do mercado de seguros e proteção patrimonial
+// Atualizado automaticamente em 15/10/2025 17:31:02
+
 export const noticias = [
   {
+    id: 'susep-abre-consulta-p-blica-para-regulamenta-o-de-',
+    titulo: 'Susep abre consulta pública para regulamentação de cooperativas de seguros',
+    resumo: 'A Susep lançou consulta pública sobre a regulamentação das operações de seguros por cooperativas, conforme previsto na LC 213/2025, visando maior segurança jurídica e inclusão securitária.',
+    data: '09/10/2025',
+    categoria: 'Resoluções SUSEP',
+    tags: ["Susep", "cooperativas", "LC 213/2025"]
+  },
+  {
+    id: 'novo-marco-legal-dos-seguros-debatido-em-evento-da',
+    titulo: 'Novo marco legal dos seguros é debatido em evento da CNseg',
+    resumo: 'Especialistas discutiram os impactos da Lei 15.040/2024, que cria um microssistema próprio para o setor de seguros, promovendo maior previsibilidade e confiança no mercado.',
+    data: '09/10/2025',
+    categoria: 'Lei 15.040/2024',
+    tags: ["Lei 15.040/2024", "CNseg", "mercado de seguros"]
+  },
+  {
+    id: 'susep-abre-consulta-p-blica-sobre-novas-regras-par',
+    titulo: 'Susep abre consulta pública sobre novas regras para transferência de carteiras',
+    resumo: 'A Susep publicou edital para consulta pública sobre a transferência de carteiras entre seguradoras, cooperativas e resseguradores, alinhando normas à Lei 15.040/2024 e à Resolução CNSP 422.',
+    data: '14/10/2025',
+    categoria: 'Resoluções SUSEP',
+    tags: ["transferência de carteira", "Susep", "CNSP"]
+  },
+  {
+    id: 'susep-debate-nova-lei-do-contrato-de-seguro-em-sem',
+    titulo: 'Susep debate nova Lei do Contrato de Seguro em seminário jurídico',
+    resumo: 'A autarquia participou de painel sobre as mudanças trazidas pela Lei 15.040/2024, destacando avanços em transparência e equilíbrio nas relações contratuais do setor.',
+    data: '10/10/2025',
+    categoria: 'Lei 15.040/2024',
+    tags: ["Susep", "Lei 15.040/2024", "contrato de seguro"]
+  },
+  {
+    id: 'mercado-de-seguros-brasileiro-registra-aumento-de-',
+    titulo: 'Mercado de seguros brasileiro registra aumento de profissionais em 2025',
+    resumo: 'O setor de seguros brasileiro registrou quase 8,6 mil novos profissionais na Susep em 2025, indicando crescimento e fortalecimento do mercado.',
+    data: '13/10/2025',
+    categoria: 'Mercado de Seguros',
+    tags: ["mercado de seguros", "Susep", "profissionais"]
+  },
+{
     "titulo": "Lei 15.040/2024: CNseg promove workshop para orientar seguradoras sobre a nova legislação",
     "resumo": "A CNseg realizou evento para explicar às seguradoras as principais mudanças trazidas pela nova Lei 15.040/2024 e seus impactos no mercado.",
     "conteudo": "No dia 2025-10-07, a Confederação Nacional das Seguradoras (CNseg) promoveu um workshop virtual dirigido às seguradoras, corretores e demais stakeholders do setor, com foco na nova Lei 15.040/2024, que atualiza o marco regulatório dos seguros no Brasil.\n\nDurante o evento, especialistas detalharam os principais pontos da legislação, como a flexibilização de algumas regras operacionais, o fortalecimento da proteção ao consumidor e a ampliação das possibilidades para produtos inovadores, incluindo seguros digitais e proteção veicular.\n\nA iniciativa buscou esclarecer dúvidas e orientar as empresas sobre as adequações necessárias para o cumprimento da lei, que entrou em vigor no início de 2025 e já impacta diretamente a dinâmica do mercado.\n\nA CNseg ressaltou que a nova lei representa um avanço importante para a modernização do setor, contribuindo para maior competitividade e inclusão seguradora no país.",
