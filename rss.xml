@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Notícias - Administradora Mutual</title>
+    <link>https://noticias.administradoramutual.com.br</link>
+    <description>Central de notícias sobre mercado de seguros, proteção patrimonial mutualista, regulamentações da SUSEP e CNSP</description>
+    <language>pt-BR</language>
+    <lastBuildDate>Wed, 25 Feb 2026 20:34:34 +0000</lastBuildDate>
+    <atom:link href="https://noticias.administradoramutual.com.br/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://noticias.administradoramutual.com.br/favicon-192.png</url>
+      <title>Administradora Mutual</title>
+      <link>https://noticias.administradoramutual.com.br</link>
+    </image>
+    <item>
+      <title>Susep abre consulta pública para regulamentação de cooperativas de seguros</title>
+      <link>https://noticias.administradoramutual.com.br/#/noticia/susep-abre-consulta-p-blica-para-regulamenta-o-de-</link>
+      <description>A Susep lançou consulta pública sobre a regulamentação das operações de seguros por cooperativas, conforme previsto na LC 213/2025, visando maior segurança jurídica e inclusão securitária.</description>
+      <pubDate>Thu, 09 Oct 2025 08:00:00 -0300</pubDate>
+      <category>Resoluções SUSEP</category>
+      <guid isPermaLink="false">susep-abre-consulta-p-blica-para-regulamenta-o-de-</guid>
+    </item>
+    <item>
+      <title>Novo marco legal dos seguros é debatido em evento da CNseg</title>
+      <link>https://noticias.administradoramutual.com.br/#/noticia/novo-marco-legal-dos-seguros-debatido-em-evento-da</link>
+      <description>Especialistas discutiram os impactos da Lei 15.040/2024, que cria um microssistema próprio para o setor de seguros, promovendo maior previsibilidade e confiança no mercado.</description>
+      <pubDate>Thu, 09 Oct 2025 08:00:00 -0300</pubDate>
+      <category>Lei 15.040/2024</category>
+      <guid isPermaLink="false">novo-marco-legal-dos-seguros-debatido-em-evento-da</guid>
+    </item>
+    <item>
+      <title>Susep abre consulta pública sobre novas regras para transferência de carteiras</title>
+      <link>https://noticias.administradoramutual.com.br/#/noticia/susep-abre-consulta-p-blica-sobre-novas-regras-par</link>
+      <description>A Susep publicou edital para consulta pública sobre a transferência de carteiras entre seguradoras, cooperativas e resseguradores, alinhando normas à Lei 15.040/2024 e à Resolução CNSP 422.</description>
+      <pubDate>Tue, 14 Oct 2025 08:00:00 -0300</pubDate>
+      <category>Resoluções SUSEP</category>
+      <guid isPermaLink="false">susep-abre-consulta-p-blica-sobre-novas-regras-par</guid>
+    </item>
+    <item>
+      <title>Susep debate nova Lei do Contrato de Seguro em seminário jurídico</title>
+      <link>https://noticias.administradoramutual.com.br/#/noticia/susep-debate-nova-lei-do-contrato-de-seguro-em-sem</link>
+      <description>A autarquia participou de painel sobre as mudanças trazidas pela Lei 15.040/2024, destacando avanços em transparência e equilíbrio nas relações contratuais do setor.</description>
+      <pubDate>Fri, 10 Oct 2025 08:00:00 -0300</pubDate>
+      <category>Lei 15.040/2024</category>
+      <guid isPermaLink="false">susep-debate-nova-lei-do-contrato-de-seguro-em-sem</guid>
+    </item>
+    <item>
+      <title>Mercado de seguros brasileiro registra aumento de profissionais em 2025</title>
+      <link>https://noticias.administradoramutual.com.br/#/noticia/mercado-de-seguros-brasileiro-registra-aumento-de-</link>
+      <description>O setor de seguros brasileiro registrou quase 8,6 mil novos profissionais na Susep em 2025, indicando crescimento e fortalecimento do mercado.</description>
+      <pubDate>Mon, 13 Oct 2025 08:00:00 -0300</pubDate>
+      <category>Mercado de Seguros</category>
+      <guid isPermaLink="false">mercado-de-seguros-brasileiro-registra-aumento-de-</guid>
+    </item>
+    <item>
+      <title>Lei 15.040/2024: CNseg promove workshop para orientar seguradoras sobre a nova legislação</title>
+      <link>https://noticias.administradoramutual.com.br/#/noticia/5</link>
+      <description>A CNseg realizou evento para explicar às seguradoras as principais mudanças trazidas pela nova Lei 15.040/2024 e seus impactos no mercado.</description>
+      <pubDate>Tue, 07 Oct 2025 08:00:00 -0300</pubDate>
+      <category>Lei 15.040/2024</category>
+      <guid isPermaLink="false">5</guid>
+    </item>
+    <item>
+      <title>Projeto de Lei Complementar 213/2025 avança na regulamentação do mutualismo para proteção patrimonial</title>
+      <link>https://noticias.administradoramutual.com.br/#/noticia/4</link>
+      <description>O PLC 213/2025 avança na Câmara dos Deputados, propondo regras para fortalecer a proteção patrimonial por meio de entidades mutualistas no Brasil.</description>
+      <pubDate>Sat, 04 Oct 2025 08:00:00 -0300</pubDate>
+      <category>LC 213/2025</category>
+      <guid isPermaLink="false">4</guid>
+    </item>
+    <item>
+      <title>CNseg lança estudo sobre crescimento do mercado de seguros em 2025</title>
+      <link>https://noticias.administradoramutual.com.br/#/noticia/3</link>
+      <description>A Confederação Nacional das Seguradoras (CNseg) divulgou relatório apontando crescimento de 8% no mercado de seguros brasileiro no primeiro semestre de 2025.</description>
+      <pubDate>Mon, 06 Oct 2025 08:00:00 -0300</pubDate>
+      <category>Mercado de Seguros</category>
+      <guid isPermaLink="false">3</guid>
+    </item>
+    <item>
+      <title>CNSP aprova diretrizes para expansão do seguro rural no Brasil</title>
+      <link>https://noticias.administradoramutual.com.br/#/noticia/2</link>
+      <description>O Conselho Nacional de Seguros Privados (CNSP) definiu novas diretrizes para ampliar a oferta e o acesso ao seguro rural no país, fortalecendo o agronegócio.</description>
+      <pubDate>Fri, 03 Oct 2025 08:00:00 -0300</pubDate>
+      <category>Resoluções CNSP</category>
+      <guid isPermaLink="false">2</guid>
+    </item>
+    <item>
+      <title>SUSEP aprova nova norma para simplificação do cadastro de corretores de seguros</title>
+      <link>https://noticias.administradoramutual.com.br/#/noticia/1</link>
+      <description>A SUSEP publicou norma que simplifica o processo de cadastro e atualização cadastral dos corretores de seguros, visando maior agilidade e segurança.</description>
+      <pubDate>Sun, 05 Oct 2025 08:00:00 -0300</pubDate>
+      <category>Resoluções SUSEP</category>
+      <guid isPermaLink="false">1</guid>
+    </item>
+  </channel>
+</rss>
