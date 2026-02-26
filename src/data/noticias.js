@@ -6,7 +6,7 @@ export const noticias = [
     id: 'susep-abre-consulta-p-blica-para-regulamenta-o-de-',
     titulo: 'Susep abre consulta pública para regulamentação de cooperativas de seguros',
     resumo: 'A Susep lançou consulta pública sobre a regulamentação das operações de seguros por cooperativas, conforme previsto na LC 213/2025, visando maior segurança jurídica e inclusão securitária.',
-    data: '09/10/2025',
+    data: '2025-10-09',
     categoria: 'Resoluções SUSEP',
     tags: ["Susep", "cooperativas", "LC 213/2025"]
   },
@@ -14,7 +14,7 @@ export const noticias = [
     id: 'novo-marco-legal-dos-seguros-debatido-em-evento-da',
     titulo: 'Novo marco legal dos seguros é debatido em evento da CNseg',
     resumo: 'Especialistas discutiram os impactos da Lei 15.040/2024, que cria um microssistema próprio para o setor de seguros, promovendo maior previsibilidade e confiança no mercado.',
-    data: '09/10/2025',
+    data: '2025-10-09',
     categoria: 'Lei 15.040/2024',
     tags: ["Lei 15.040/2024", "CNseg", "mercado de seguros"]
   },
@@ -22,7 +22,7 @@ export const noticias = [
     id: 'susep-abre-consulta-p-blica-sobre-novas-regras-par',
     titulo: 'Susep abre consulta pública sobre novas regras para transferência de carteiras',
     resumo: 'A Susep publicou edital para consulta pública sobre a transferência de carteiras entre seguradoras, cooperativas e resseguradores, alinhando normas à Lei 15.040/2024 e à Resolução CNSP 422.',
-    data: '14/10/2025',
+    data: '2025-10-14',
     categoria: 'Resoluções SUSEP',
     tags: ["transferência de carteira", "Susep", "CNSP"]
   },
@@ -30,7 +30,7 @@ export const noticias = [
     id: 'susep-debate-nova-lei-do-contrato-de-seguro-em-sem',
     titulo: 'Susep debate nova Lei do Contrato de Seguro em seminário jurídico',
     resumo: 'A autarquia participou de painel sobre as mudanças trazidas pela Lei 15.040/2024, destacando avanços em transparência e equilíbrio nas relações contratuais do setor.',
-    data: '10/10/2025',
+    data: '2025-10-10',
     categoria: 'Lei 15.040/2024',
     tags: ["Susep", "Lei 15.040/2024", "contrato de seguro"]
   },
@@ -38,7 +38,7 @@ export const noticias = [
     id: 'mercado-de-seguros-brasileiro-registra-aumento-de-',
     titulo: 'Mercado de seguros brasileiro registra aumento de profissionais em 2025',
     resumo: 'O setor de seguros brasileiro registrou quase 8,6 mil novos profissionais na Susep em 2025, indicando crescimento e fortalecimento do mercado.',
-    data: '13/10/2025',
+    data: '2025-10-13',
     categoria: 'Mercado de Seguros',
     tags: ["mercado de seguros", "Susep", "profissionais"]
   },
