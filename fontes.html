@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fontes de Notícias — Administradora Mutual</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate" type="application/rss+xml" title="Notícias - Administradora Mutual" href="/rss.xml">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0D47A1, #1565C3);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo { width: 36px; height: 36px; }
+
+        .header-title { font-size: 18px; font-weight: 700; }
+        .header-subtitle { font-size: 12px; opacity: 0.8; }
+
+        .header-actions { display: flex; gap: 12px; align-items: center; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-home { background: rgba(255,255,255,0.15); color: white; }
+        .btn-home:hover { background: rgba(255,255,255,0.25); }
+        .btn-feed { background: rgba(255,255,255,0.15); color: white; }
+        .btn-feed:hover { background: rgba(255,255,255,0.25); }
+        .btn-rss { background: #FF6600; color: white; }
+        .btn-rss:hover { background: #e55b00; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1565C3, #0D47A1);
+            color: white;
+            padding: 48px 24px;
+            text-align: center;
+        }
+
+        .hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 12px; }
+        .hero p { font-size: 16px; opacity: 0.9; max-width: 700px; margin: 0 auto 8px; }
+        .hero .hero-sub { font-size: 14px; opacity: 0.7; }
+
+        /* Stats */
+        .stats {
+            max-width: 1100px;
+            margin: -20px auto 0;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .stat-number { font-size: 28px; font-weight: 800; color: #0D47A1; }
+        .stat-label { font-size: 13px; color: #64748b; margin-top: 4px; }
+
+        /* Filtros */
+        .section-title {
+            max-width: 1100px;
+            margin: 32px auto 0;
+            padding: 0 24px;
+        }
+
+        .section-title h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title h2 .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #0D47A1;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+
+        .section-title p {
+            font-size: 14px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .filter-bar {
+            max-width: 1100px;
+            margin: 16px auto 0;
+            padding: 0 24px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 18px;
+            border-radius: 24px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            color: #475569;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover { border-color: #0D47A1; color: #0D47A1; }
+
+        .filter-btn.active {
+            background: #0D47A1;
+            color: white;
+            border-color: #0D47A1;
+        }
+
+        /* Grid de Cards */
+        .cards-grid {
+            max-width: 1100px;
+            margin: 24px auto;
+            padding: 0 24px 48px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        /* Card */
+        .source-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .source-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transform: translateY(-4px);
+            border-color: #0D47A1;
+        }
+
+        .card-header {
+            padding: 20px 20px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .card-favicon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-favicon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .card-favicon .fallback-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .card-info { flex: 1; min-width: 0; }
+
+        .card-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-domain {
+            font-size: 12px;
+            color: #94a3b8;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-type-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .badge-setor { background: #dcfce7; color: #166534; }
+        .badge-nacional { background: #dbeafe; color: #1e40af; }
+        .badge-goias { background: #fef3c7; color: #92400e; }
+
+        .card-body {
+            padding: 0 20px 16px;
+            flex: 1;
+        }
+
+        .card-description {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-tags {
+            padding: 0 20px 16px;
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .card-tag {
+            padding: 3px 10px;
+            border-radius: 6px;
+            background: #f1f5f9;
+            color: #64748b;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .card-footer {
+            padding: 14px 20px;
+            border-top: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #0D47A1, #1565C3);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .card-link:hover {
+            background: linear-gradient(135deg, #0a3a8a, #1256a8);
+            box-shadow: 0 4px 12px rgba(13, 71, 161, 0.3);
+        }
+
+        .card-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 24px;
+            font-size: 13px;
+        }
+
+        .footer a { color: #60a5fa; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 22px; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid { grid-template-columns: 1fr; }
+            .header-actions { gap: 6px; }
+            .btn { padding: 6px 10px; font-size: 11px; }
+        }
+
+        @media (max-width: 480px) {
+            .stats { grid-template-columns: 1fr; }
+        }
+
+        /* Animação de entrada */
+        .source-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.4s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="header-left">
+                <img src="/favicon-32.png" alt="Logo" class="header-logo">
+                <div>
+                    <div class="header-title">Administradora Mutual</div>
+                    <div class="header-subtitle">Central de Notícias</div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="/" class="btn btn-home">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Início
+                </a>
+                <a href="/feed.html" class="btn btn-feed">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                    Feed
+                </a>
+                <a href="/rss.xml" class="btn btn-rss" target="_blank">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+                    RSS
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Nossas Fontes de Notícias</h1>
+        <p>Monitoramos diariamente os principais portais de notícias do Brasil para trazer as informações mais relevantes sobre o mercado de seguros e proteção patrimonial.</p>
+        <p class="hero-sub">Clique em qualquer card para acessar diretamente o site da fonte.</p>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">25</div>
+            <div class="stat-label">Fontes Monitoradas</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Setor de Seguros</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">15</div>
+            <div class="stat-label">Portais Nacionais</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Portais de Goiás</div>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filter-bar" id="filters">
+        <button class="filter-btn active" onclick="filterSources('todas')">Todas (25)</button>
+        <button class="filter-btn" onclick="filterSources('setor')">Setor de Seguros (6)</button>
+        <button class="filter-btn" onclick="filterSources('nacional')">Nacionais (15)</button>
+        <button class="filter-btn" onclick="filterSources('goias')">Goiás (4)</button>
+    </div>
+
+    <!-- Grid de Cards -->
+    <div class="cards-grid" id="cards-grid"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Administradora Mutual — <a href="/">Página Inicial</a> | <a href="/feed.html">Feed de Notícias</a> | <a href="/rss.xml" target="_blank">RSS XML</a></p>
+    </footer>
+
+    <script>
+        // ============================================================
+        // DADOS DAS 25 FONTES
+        // ============================================================
+        const fontes = [
+            // --- SETOR DE SEGUROS (6) ---
+            {
+                nome: "SUSEP",
+                url: "https://www.gov.br/susep/pt-br",
+                dominio: "gov.br/susep",
+                tipo: "setor",
+                descricao: "Superintendência de Seguros Privados — autarquia federal responsável pela regulação e fiscalização dos mercados de seguros, previdência complementar aberta e capitalização no Brasil.",
+                tags: ["Regulação", "Fiscalização", "Governo Federal"],
+                cor: "#1B5E20"
+            },
+            {
+                nome: "CNseg",
+                url: "https://cnseg.org.br",
+                dominio: "cnseg.org.br",
+                tipo: "setor",
+                descricao: "Confederação Nacional das Seguradoras — entidade que representa as empresas de seguros, previdência complementar aberta e capitalização no Brasil.",
+                tags: ["Confederação", "Seguradoras", "Mercado"],
+                cor: "#0D47A1"
+            },
+            {
+                nome: "Sincor-SP",
+                url: "https://www.sincor.org.br",
+                dominio: "sincor.org.br",
+                tipo: "setor",
+                descricao: "Sindicato dos Corretores de Seguros de São Paulo — principal entidade de classe dos corretores, com notícias sobre regulamentação, eventos e mercado.",
+                tags: ["Corretores", "Sindicato", "São Paulo"],
+                cor: "#283593"
+            },
+            {
+                nome: "CQCS",
+                url: "https://cqcs.com.br",
+                dominio: "cqcs.com.br",
+                tipo: "setor",
+                descricao: "Centro de Qualificação do Corretor de Seguros — portal líder em conteúdo educacional e informativo para profissionais do mercado segurador.",
+                tags: ["Educação", "Corretores", "Conteúdo"],
+                cor: "#E65100"
+            },
+            {
+                nome: "Sonho Seguro",
+                url: "https://www.sonhoseguro.com.br",
+                dominio: "sonhoseguro.com.br",
+                tipo: "setor",
+                descricao: "Portal especializado em notícias do mercado de seguros, com cobertura diária de eventos, regulamentações e tendências do setor segurador brasileiro.",
+                tags: ["Notícias", "Seguros", "Tendências"],
+                cor: "#4A148C"
+            },
+            {
+                nome: "Revista Apólice",
+                url: "https://www.revistaapolice.com.br",
+                dominio: "revistaapolice.com.br",
+                tipo: "setor",
+                descricao: "Publicação especializada no mercado de seguros com análises, entrevistas e coberturas de eventos do setor segurador e de previdência.",
+                tags: ["Revista", "Análises", "Entrevistas"],
+                cor: "#B71C1C"
+            },
+
+            // --- NACIONAIS (15) ---
+            {
+                nome: "G1",
+                url: "https://g1.globo.com/economia/",
+                dominio: "g1.globo.com",
+                tipo: "nacional",
+                descricao: "Portal de notícias da Globo — maior site de notícias do Brasil, com cobertura abrangente de economia, política e atualidades.",
+                tags: ["Economia", "Globo", "Maior Audiência"],
+                cor: "#D32F2F"
+            },
+            {
+                nome: "Folha de S. Paulo",
+                url: "https://www1.folha.uol.com.br/mercado/",
+                dominio: "folha.uol.com.br",
+                tipo: "nacional",
+                descricao: "Jornal de maior circulação do Brasil — referência em jornalismo investigativo e cobertura econômica aprofundada.",
+                tags: ["Jornal", "Mercado", "Investigativo"],
+                cor: "#1565C0"
+            },
+            {
+                nome: "Estadão",
+                url: "https://www.estadao.com.br/economia/",
+                dominio: "estadao.com.br",
+                tipo: "nacional",
+                descricao: "O Estado de S. Paulo — um dos jornais mais tradicionais do país, com forte cobertura de economia, finanças e negócios.",
+                tags: ["Tradição", "Economia", "Finanças"],
+                cor: "#0D47A1"
+            },
+            {
+                nome: "CNN Brasil",
+                url: "https://www.cnnbrasil.com.br/economia/",
+                dominio: "cnnbrasil.com.br",
+                tipo: "nacional",
+                descricao: "Versão brasileira da CNN — cobertura em tempo real de economia, política e negócios com foco em análises e opinião.",
+                tags: ["TV", "Tempo Real", "Análises"],
+                cor: "#C62828"
+            },
+            {
+                nome: "UOL Economia",
+                url: "https://economia.uol.com.br/",
+                dominio: "uol.com.br",
+                tipo: "nacional",
+                descricao: "Seção de economia do UOL — um dos maiores portais brasileiros, com notícias sobre mercado financeiro, investimentos e negócios.",
+                tags: ["Portal", "Investimentos", "Negócios"],
+                cor: "#F57F17"
+            },
+            {
+                nome: "Valor Econômico",
+                url: "https://valor.globo.com/financas/",
+                dominio: "valor.globo.com",
+                tipo: "nacional",
+                descricao: "Principal jornal de economia e finanças do Brasil — referência para executivos e investidores com análises aprofundadas.",
+                tags: ["Finanças", "Executivos", "Referência"],
+                cor: "#1B5E20"
+            },
+            {
+                nome: "Exame",
+                url: "https://exame.com/economia/",
+                dominio: "exame.com",
+                tipo: "nacional",
+                descricao: "Revista e portal de negócios — cobertura de economia, tecnologia, carreira e investimentos com foco em análises de mercado.",
+                tags: ["Negócios", "Tecnologia", "Investimentos"],
+                cor: "#000000"
+            },
+            {
+                nome: "Metrópoles",
+                url: "https://www.metropoles.com/negocios/",
+                dominio: "metropoles.com",
+                tipo: "nacional",
+                descricao: "Portal de notícias com forte presença digital — cobertura de política, economia e negócios com crescimento acelerado de audiência.",
+                tags: ["Digital", "Política", "Crescimento"],
+                cor: "#6A1B9A"
+            },
+            {
+                nome: "R7",
+                url: "https://noticias.r7.com/economia/",
+                dominio: "r7.com",
+                tipo: "nacional",
+                descricao: "Portal de notícias do Grupo Record — cobertura ampla de economia, política e entretenimento com grande alcance nacional.",
+                tags: ["Record", "Economia", "Alcance"],
+                cor: "#2E7D32"
+            },
+            {
+                nome: "Veja",
+                url: "https://veja.abril.com.br/economia/",
+                dominio: "veja.abril.com.br",
+                tipo: "nacional",
+                descricao: "Maior revista semanal do Brasil — cobertura de economia, política e comportamento com análises e reportagens especiais.",
+                tags: ["Revista", "Política", "Reportagens"],
+                cor: "#D32F2F"
+            },
+            {
+                nome: "Gazeta do Povo",
+                url: "https://www.gazetadopovo.com.br/economia/",
+                dominio: "gazetadopovo.com.br",
+                tipo: "nacional",
+                descricao: "Jornal paranaense com alcance nacional — cobertura de economia, política e opinião com perspectiva independente.",
+                tags: ["Independente", "Opinião", "Paraná"],
+                cor: "#1A237E"
+            },
+            {
+                nome: "Poder360",
+                url: "https://www.poder360.com.br/economia/",
+                dominio: "poder360.com.br",
+                tipo: "nacional",
+                descricao: "Portal nativo digital de jornalismo político e econômico — reconhecido por análises de dados e cobertura do poder público.",
+                tags: ["Dados", "Política", "Digital Nativo"],
+                cor: "#37474F"
+            },
+            {
+                nome: "Agência Brasil",
+                url: "https://agenciabrasil.ebc.com.br/economia",
+                dominio: "agenciabrasil.ebc.com.br",
+                tipo: "nacional",
+                descricao: "Agência pública de notícias — fonte oficial de informações do governo federal com cobertura factual e institucional.",
+                tags: ["Governo", "Oficial", "Factual"],
+                cor: "#00695C"
+            },
+            {
+                nome: "Correio Braziliense",
+                url: "https://www.correiobraziliense.com.br/economia/",
+                dominio: "correiobraziliense.com.br",
+                tipo: "nacional",
+                descricao: "Principal jornal de Brasília — cobertura privilegiada do cenário político e econômico da capital federal.",
+                tags: ["Brasília", "Política", "Capital"],
+                cor: "#0277BD"
+            },
+            {
+                nome: "Terra",
+                url: "https://www.terra.com.br/economia/",
+                dominio: "terra.com.br",
+                tipo: "nacional",
+                descricao: "Portal de conteúdo com ampla cobertura de economia, tecnologia e estilo de vida, com grande base de usuários.",
+                tags: ["Portal", "Tecnologia", "Amplo"],
+                cor: "#E65100"
+            },
+
+            // --- GOIÁS (4) ---
+            {
+                nome: "O Popular",
+                url: "https://opopular.com.br/",
+                dominio: "opopular.com.br",
+                tipo: "goias",
+                descricao: "Principal jornal de Goiás — referência em jornalismo regional com cobertura de política, economia e sociedade goiana.",
+                tags: ["Goiânia", "Tradição", "Regional"],
+                cor: "#1B5E20"
+            },
+            {
+                nome: "Jornal Opção",
+                url: "https://www.jornalopcao.com.br/",
+                dominio: "jornalopcao.com.br",
+                tipo: "goias",
+                descricao: "Jornal semanal de Goiás com forte presença digital — cobertura de política, economia, cultura e opinião no estado.",
+                tags: ["Política", "Cultura", "Opinião"],
+                cor: "#C62828"
+            },
+            {
+                nome: "Portal 6",
+                url: "https://portal6.com.br/",
+                dominio: "portal6.com.br",
+                tipo: "goias",
+                descricao: "Portal líder em Anápolis e região — cobertura de notícias locais, política e economia com forte engajamento digital.",
+                tags: ["Anápolis", "Local", "Digital"],
+                cor: "#0D47A1"
+            },
+            {
+                nome: "Mais Goiás",
+                url: "https://www.maisgoias.com.br/",
+                dominio: "maisgoias.com.br",
+                tipo: "goias",
+                descricao: "Portal de notícias de Goiás — cobertura abrangente de política, economia, esportes e entretenimento no estado.",
+                tags: ["Goiás", "Abrangente", "Esportes"],
+                cor: "#F57F17"
+            }
+        ];
+
+        // ============================================================
+        // RENDERIZAÇÃO
+        // ============================================================
+
+        let activeFilter = 'todas';
+
+        function getFaviconUrl(dominio) {
+            // Extrair apenas o domínio principal para a API do Google
+            let domain = dominio;
+            if (domain.includes('/')) {
+                domain = domain.split('/')[0];
+            }
+            return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+        }
+
+        function getInitials(nome) {
+            return nome.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+        }
+
+        function getTipoBadge(tipo) {
+            switch(tipo) {
+                case 'setor': return '<span class="card-type-badge badge-setor">Setor de Seguros</span>';
+                case 'nacional': return '<span class="card-type-badge badge-nacional">Nacional</span>';
+                case 'goias': return '<span class="card-type-badge badge-goias">Goiás</span>';
+                default: return '';
+            }
+        }
+
+        function renderCards(filter) {
+            const grid = document.getElementById('cards-grid');
+            const filtered = filter === 'todas' ? fontes : fontes.filter(f => f.tipo === filter);
+
+            grid.innerHTML = filtered.map((f, i) => {
+                const faviconUrl = getFaviconUrl(f.dominio);
+                const initials = getInitials(f.nome);
+                const tags = f.tags.map(t => `<span class="card-tag">${t}</span>`).join('');
+                const delay = i * 0.05;
+
+                return `
+                <div class="source-card" style="animation-delay: ${delay}s">
+                    <div class="card-header">
+                        <div class="card-favicon">
+                            <img src="${faviconUrl}" alt="${f.nome}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-icon" style="display:none; background:${f.cor}">${initials}</div>
+                        </div>
+                        <div class="card-info">
+                            <div class="card-name">${f.nome}</div>
+                            <div class="card-domain">${f.dominio}</div>
+                        </div>
+                        ${getTipoBadge(f.tipo)}
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">${f.descricao}</p>
+                    </div>
+                    <div class="card-tags">${tags}</div>
+                    <div class="card-footer">
+                        <a href="${f.url}" target="_blank" rel="noopener noreferrer" class="card-link">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Acessar Site
+                        </a>
+                        <div class="card-status">
+                            <div class="status-dot"></div>
+                            Monitorado
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function filterSources(tipo) {
+            activeFilter = tipo;
+            // Atualizar botões
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('onclick').includes(`'${tipo}'`)) {
+                    btn.classList.add('active');
+                }
+            });
+            renderCards(tipo);
+        }
+
+        // Iniciar
+        renderCards('todas');
+    </script>
+</body>
+</html>
