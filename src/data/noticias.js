@@ -1,135 +1,303 @@
-// Notícias do mercado de seguros e proteção patrimonial
-// Atualizado automaticamente em 15/10/2025 17:31:02
-
 export const noticias = [
+];
+
+const dadosNoticias = [
   {
-    id: 'susep-abre-consulta-p-blica-para-regulamenta-o-de-',
-    titulo: 'Susep abre consulta pública para regulamentação de cooperativas de seguros',
-    resumo: 'A Susep lançou consulta pública sobre a regulamentação das operações de seguros por cooperativas, conforme previsto na LC 213/2025, visando maior segurança jurídica e inclusão securitária.',
-    data: '2025-10-09',
-    categoria: 'Resoluções SUSEP',
-    tags: ["Susep", "cooperativas", "LC 213/2025"]
-  },
-  {
-    id: 'novo-marco-legal-dos-seguros-debatido-em-evento-da',
-    titulo: 'Novo marco legal dos seguros é debatido em evento da CNseg',
-    resumo: 'Especialistas discutiram os impactos da Lei 15.040/2024, que cria um microssistema próprio para o setor de seguros, promovendo maior previsibilidade e confiança no mercado.',
-    data: '2025-10-09',
-    categoria: 'Lei 15.040/2024',
-    tags: ["Lei 15.040/2024", "CNseg", "mercado de seguros"]
-  },
-  {
-    id: 'susep-abre-consulta-p-blica-sobre-novas-regras-par',
-    titulo: 'Susep abre consulta pública sobre novas regras para transferência de carteiras',
-    resumo: 'A Susep publicou edital para consulta pública sobre a transferência de carteiras entre seguradoras, cooperativas e resseguradores, alinhando normas à Lei 15.040/2024 e à Resolução CNSP 422.',
-    data: '2025-10-14',
-    categoria: 'Resoluções SUSEP',
-    tags: ["transferência de carteira", "Susep", "CNSP"]
-  },
-  {
-    id: 'susep-debate-nova-lei-do-contrato-de-seguro-em-sem',
-    titulo: 'Susep debate nova Lei do Contrato de Seguro em seminário jurídico',
-    resumo: 'A autarquia participou de painel sobre as mudanças trazidas pela Lei 15.040/2024, destacando avanços em transparência e equilíbrio nas relações contratuais do setor.',
-    data: '2025-10-10',
-    categoria: 'Lei 15.040/2024',
-    tags: ["Susep", "Lei 15.040/2024", "contrato de seguro"]
-  },
-  {
-    id: 'mercado-de-seguros-brasileiro-registra-aumento-de-',
-    titulo: 'Mercado de seguros brasileiro registra aumento de profissionais em 2025',
-    resumo: 'O setor de seguros brasileiro registrou quase 8,6 mil novos profissionais na Susep em 2025, indicando crescimento e fortalecimento do mercado.',
-    data: '2025-10-13',
-    categoria: 'Mercado de Seguros',
-    tags: ["mercado de seguros", "Susep", "profissionais"]
-  },
-{
-    "titulo": "Lei 15.040/2024: CNseg promove workshop para orientar seguradoras sobre a nova legislação",
-    "resumo": "A CNseg realizou evento para explicar às seguradoras as principais mudanças trazidas pela nova Lei 15.040/2024 e seus impactos no mercado.",
-    "conteudo": "No dia 2025-10-07, a Confederação Nacional das Seguradoras (CNseg) promoveu um workshop virtual dirigido às seguradoras, corretores e demais stakeholders do setor, com foco na nova Lei 15.040/2024, que atualiza o marco regulatório dos seguros no Brasil.\n\nDurante o evento, especialistas detalharam os principais pontos da legislação, como a flexibilização de algumas regras operacionais, o fortalecimento da proteção ao consumidor e a ampliação das possibilidades para produtos inovadores, incluindo seguros digitais e proteção veicular.\n\nA iniciativa buscou esclarecer dúvidas e orientar as empresas sobre as adequações necessárias para o cumprimento da lei, que entrou em vigor no início de 2025 e já impacta diretamente a dinâmica do mercado.\n\nA CNseg ressaltou que a nova lei representa um avanço importante para a modernização do setor, contribuindo para maior competitividade e inclusão seguradora no país.",
-    "categoria": "Lei 15.040/2024",
-    "data": "2025-10-07",
-    "fonte": "https://www.cnseg.org.br/eventos/2025/10/07/workshop-lei-15040",
-    "tags": [
-      "Lei 15.040/2024",
-      "CNseg",
-      "Legislação",
-      "Mercado de Seguros",
-      "Proteção Veicular"
+    "titulo": "Mapfre nomeia nova diretora para seguros massificados e expande portfólio",
+    "resumo": "A Mapfre promove mudanças em sua diretoria de seguros massificados, nomeando Andrea Nogueira como nova diretora.",
+    "conteudo": [
+      "A Mapfre anunciou a nomeação de Andrea Nogueira como diretora de seguros massificados, cargo que ela assumiu após atuar como superintendente do segmento desde 2022.",
+      "Andrea, com 23 anos de experiência no setor, será responsável pela estratégia de crescimento da unidade, focando na ampliação do portfólio e na eficiência operacional.",
+      "A diretoria de seguros massificados é responsável pelo desenvolvimento de produtos voltados ao varejo, incluindo seguros empresariais, residenciais e garantia estendida.",
+      "Em 2025, a área de massificados da Mapfre registrou um crescimento de 17% em volume de prêmios, destacando a importância desse segmento para a seguradora.",
+      "Além disso, Rafael Haddad foi promovido a superintendente nacional do 'Mapfre On', plataforma digital de suporte a corretores."
     ],
-    "id": 5,
+    "categoria": "Mercado de Seguros",
+    "data": "2026-02-25",
+    "tags": [
+      "Mapfre",
+      "seguros massificados",
+      "crescimento",
+      "portfólio",
+      "Rafael Haddad"
+    ],
+    "fonte": "Revista Apólice",
+    "fonte_url": "https://revistaapolice.com.br/2026/02/mapfre-promove-mudancas-em-massificados-e-mapfre-on/",
+    "id": "mapfre-nomeia-nova-diretora-para-seguros-massifica",
     "autor": "Equipe Administradora Mutual",
     "destaque": true
   },
   {
-    "titulo": "Projeto de Lei Complementar 213/2025 avança na regulamentação do mutualismo para proteção patrimonial",
-    "resumo": "O PLC 213/2025 avança na Câmara dos Deputados, propondo regras para fortalecer a proteção patrimonial por meio de entidades mutualistas no Brasil.",
-    "conteudo": "Na última semana, o Projeto de Lei Complementar 213/2025, que trata da regulamentação das entidades mutualistas voltadas à proteção patrimonial, teve seu parecer aprovado na Comissão de Finanças e Tributação da Câmara dos Deputados.\n\nO PLC busca estabelecer um marco legal claro para o mutualismo no setor de seguros, promovendo segurança jurídica e estímulo à criação de associações que prestem serviços de proteção patrimonial coletiva. Entre os pontos principais estão a definição de requisitos para funcionamento, fiscalização pela SUSEP e condições para benefícios mútuos entre associados.\n\nEspecialistas destacam que a aprovação do PLC poderá ampliar a oferta de soluções mais acessíveis para proteção de bens, especialmente para pequenos empresários e grupos comunitários, fomentando a cultura da proteção coletiva.\n\nO projeto segue agora para votação em plenário, com expectativa de ser sancionado ainda em 2025, consolidando um importante avanço para o mercado segurador brasileiro.",
-    "categoria": "LC 213/2025",
-    "data": "2025-10-04",
-    "fonte": "https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=PLC2132025",
-    "tags": [
-      "PLC 213/2025",
-      "Mutualismo",
-      "Proteção Patrimonial",
-      "Legislação",
-      "Câmara dos Deputados"
+    "titulo": "CVG-RJ realiza encontro com a Seguros Unimed",
+    "resumo": "O CVG-RJ promove encontro com a Seguros Unimed para discutir produtos e estratégias no segmento Vida.",
+    "conteudo": [
+      "O Clube Vida em Grupo do Rio de Janeiro (CVG-RJ) realizará um encontro com a Seguros Unimed no dia 26 de fevereiro, focado em corretores de seguros.",
+      "O evento visa apresentar produtos e estratégias comerciais, além de fortalecer a conexão entre seguradora e corretores.",
+      "Participarão do encontro executivos da Seguros Unimed e do Grupo Dario & Porto Consultoria, promovendo um espaço para troca de informações estratégicas.",
+      "A presidente do CVG-RJ, Sonia Marra, destaca a importância de ampliar o acesso à informação no setor de seguros."
     ],
-    "id": 4,
+    "categoria": "Proteção Patrimonial",
+    "data": "2026-02-25",
+    "tags": [
+      "CVG-RJ",
+      "Seguros Unimed",
+      "eventos",
+      "corretores",
+      "Vida"
+    ],
+    "fonte": "Revista Apólice",
+    "fonte_url": "https://revistaapolice.com.br/2026/02/cvg-rj-realiza-encontro-com-a-seguros-unimed/",
+    "id": "cvg-rj-realiza-encontro-com-a-seguros-unimed",
     "autor": "Equipe Administradora Mutual",
     "destaque": false
   },
   {
-    "titulo": "CNseg lança estudo sobre crescimento do mercado de seguros em 2025",
-    "resumo": "A Confederação Nacional das Seguradoras (CNseg) divulgou relatório apontando crescimento de 8% no mercado de seguros brasileiro no primeiro semestre de 2025.",
-    "conteudo": "No último dia 2025-10-06, a CNseg apresentou um estudo detalhado sobre o desempenho do mercado de seguros no Brasil, destacando um crescimento expressivo de 8% no volume de prêmios nos primeiros seis meses do ano.\n\nO relatório atribui esse avanço à maior demanda por seguros de vida, saúde e automóveis, impulsionada pelo aumento da conscientização e pela recuperação econômica. Além disso, o segmento de proteção patrimonial também teve um crescimento relevante, com destaque para seguros residenciais e empresariais.\n\nSegundo a CNseg, a modernização regulatória, incluindo avanços nas leis e resoluções da SUSEP e do CNSP, contribuiu para um ambiente mais favorável ao desenvolvimento do setor. O estudo ainda aponta para oportunidades de expansão em seguros digitais e proteção veicular.\n\nA entidade reforça a importância da inovação e da educação financeira para manter esse ritmo positivo e ampliar a inclusão seguradora no país.",
+    "titulo": "80% das seguradoras já utilizam soluções de Inteligência Artificial",
+    "resumo": "Estudo revela que 80% das seguradoras no Brasil adotaram Inteligência Artificial, melhorando operações e atendimento ao cliente.",
+    "conteudo": [
+      "Um estudo da CNseg aponta que 80% das seguradoras brasileiras já implementaram soluções de Inteligência Artificial, com investimentos médios de R$ 2,3 bilhões em 2025.",
+      "As principais motivações para a adoção da IA incluem aumento de produtividade, melhoria da experiência do cliente e automação de tarefas.",
+      "As áreas mais impactadas são atendimento ao cliente e operações, com algumas seguradoras relatando reduções significativas no tempo de resposta ao cliente.",
+      "Embora o impacto direto na receita ainda seja modesto, as melhorias operacionais são evidentes, refletindo uma busca por eficiência no setor."
+    ],
     "categoria": "Mercado de Seguros",
-    "data": "2025-10-06",
-    "fonte": "https://www.cnseg.org.br/noticias/2025/10/06/mercado-seguros-crescimento",
+    "data": "2026-02-25",
+    "tags": [
+      "Inteligência Artificial",
+      "seguradoras",
+      "tecnologia",
+      "eficiência",
+      "atendimento"
+    ],
+    "fonte": "Revista Apólice",
+    "fonte_url": "https://revistaapolice.com.br/2026/02/80-das-seguradoras-ja-utilizam-solucoes-de-inteligencia-artificial/",
+    "id": "80-das-seguradoras-j-utilizam-solu-es-de-intelig-n",
+    "autor": "Equipe Administradora Mutual",
+    "destaque": false
+  },
+  {
+    "titulo": "Prudential do Brasil reúne mais de 350 master franqueados em evento anual",
+    "resumo": "A Prudential do Brasil realizou o Master Franchise Meeting 2026, destacando crescimento e inovações na rede de franquias.",
+    "conteudo": [
+      "O Master Franchise Meeting 2026, promovido pela Prudential do Brasil, reuniu mais de 350 master franqueados no Rio de Janeiro para celebrar resultados e apresentar novidades.",
+      "Sob o tema 'Crescimento com Propósito', o evento destacou a robustez da rede, que conta com mais de 2.000 corretoras Life Planner, e os pilares de crescimento da seguradora.",
+      "Rodrigo Prosdocimi, vice-presidente de Negócios Life Planner, enfatizou a importância da disciplina e compromisso com a proteção financeira dos brasileiros.",
+      "Durante o encontro, foi anunciada uma campanha de incentivo e o destino da convenção anual de vendas, que ocorrerá em Copenhagen em 2027."
+    ],
+    "categoria": "Mercado de Seguros",
+    "data": "2026-02-25",
+    "tags": [
+      "Prudential",
+      "franquias",
+      "crescimento",
+      "eventos",
+      "seguro"
+    ],
+    "fonte": "Sonho Seguro",
+    "fonte_url": "https://www.sonhoseguro.com.br/2026/02/prudential-do-brasil-reune-mais-de-350-master-franqueados-em-evento-anual-de-sua-rede-de-franquias/",
+    "id": "prudential-do-brasil-re-ne-mais-de-350-master-fran",
+    "autor": "Equipe Administradora Mutual",
+    "destaque": false
+  },
+  {
+    "titulo": "IRB(P&D) lança base de índices climáticos extremos",
+    "resumo": "O IRB(P&D) desenvolveu uma base de dados para quantificar eventos climáticos extremos, visando melhorar a modelagem de riscos.",
+    "conteudo": [
+      "O IRB(P&D), área do IRB(Re) dedicada à pesquisa e ao desenvolvimento, estruturou uma base de índices climáticos para identificar e quantificar eventos extremos.",
+      "Com dados de 1961 a 2024, a base inclui 68 índices padronizados, essenciais para uso atuarial e de resseguro, refletindo a importância da indústria de seguros na análise de riscos climáticos.",
+      "Em 2024, as perdas seguradas globais atingiram US$ 145 bilhões, destacando a necessidade de um entendimento aprofundado dos eventos climáticos para mitigar perdas econômicas.",
+      "O Brasil foi o quarto país com mais desastres em 2023, e a nova base de índices do IRB(P&D) busca compreender a evolução desses eventos ao longo dos últimos 60 anos."
+    ],
+    "categoria": "Mercado de Seguros",
+    "data": "2026-02-25",
+    "tags": [
+      "IRB",
+      "clima",
+      "seguro",
+      "riscos",
+      "dados"
+    ],
+    "fonte": "Sonho Seguro",
+    "fonte_url": "https://www.sonhoseguro.com.br/2026/02/irbpd-lanca-base-de-indices-climaticos-extremos/",
+    "id": "irb-p-d-lan-a-base-de-ndices-clim-ticos-extremos",
+    "autor": "Equipe Administradora Mutual",
+    "destaque": false
+  },
+  {
+    "titulo": "CNseg analisa semanalmente o cenário das Expectativas Econômicas",
+    "resumo": "Boletim da CNseg oferece análises sobre indicadores econômicos que impactam o mercado de seguros.",
+    "conteudo": [
+      "A Confederação Nacional das Seguradoras (CNseg) disponibiliza um boletim semanal que analisa as expectativas econômicas, essencial para o setor de seguros.",
+      "O boletim inclui dados sobre inflação, câmbio e taxa Selic, ajudando as seguradoras a planejar suas estratégias.",
+      "Recentemente, a CNseg foi reconhecida pelo Banco Central por sua acurácia nas estimativas econômicas."
+    ],
+    "categoria": "Mercado de Seguros",
+    "data": "2026-02-25",
     "tags": [
       "CNseg",
-      "Mercado de Seguros",
-      "Crescimento",
-      "Proteção Patrimonial",
-      "Inovação"
+      "expectativas econômicas",
+      "mercado de seguros"
     ],
-    "id": 3,
+    "fonte": "Sonho Seguro",
+    "fonte_url": "https://www.sonhoseguro.com.br/2026/02/inteligencia-estrategica-cnseg-analisa-semanalmente-o-cenario-das-expectativas-economicas/",
+    "id": "cnseg-analisa-semanalmente-o-cen-rio-das-expectati",
     "autor": "Equipe Administradora Mutual",
     "destaque": false
   },
   {
-    "titulo": "CNSP aprova diretrizes para expansão do seguro rural no Brasil",
-    "resumo": "O Conselho Nacional de Seguros Privados (CNSP) definiu novas diretrizes para ampliar a oferta e o acesso ao seguro rural no país, fortalecendo o agronegócio.",
-    "conteudo": "Em reunião realizada em 2025-10-03, o CNSP aprovou um conjunto de diretrizes focadas na expansão do seguro rural, com o objetivo de aumentar a cobertura e a proteção aos produtores agrícolas.\n\nAs medidas incluem incentivos para seguradoras desenvolverem produtos customizados, maior divulgação das vantagens do seguro rural e estímulos à inovação tecnológica para avaliação de riscos. Também foi destacado o papel do governo em fomentar parcerias e subsídios para tornar os seguros mais acessíveis.\n\nO presidente do CNSP ressaltou que o agronegócio é um dos pilares da economia brasileira e que a ampliação da proteção por meio de seguros é essencial para garantir a estabilidade financeira dos produtores e a segurança alimentar do país.\n\nEssas diretrizes deverão ser implementadas nos próximos meses, com acompanhamento conjunto da SUSEP e do Ministério da Agricultura.",
-    "categoria": "Resoluções CNSP",
-    "data": "2025-10-03",
-    "fonte": "https://www.gov.br/cnsp/pt-br/noticias/2025/10/03/diretrizes-seguro-rural",
-    "tags": [
-      "CNSP",
-      "Seguro Rural",
-      "Agronegócio",
-      "Política Pública",
-      "Proteção"
+    "titulo": "Brasil enfrenta nova era de extremos climáticos e impacto no seguro",
+    "resumo": "Relatório aponta intensificação de eventos climáticos extremos e a necessidade de resiliência no setor de seguros.",
+    "conteudo": [
+      "O relatório da Howden Re Brasil destaca que o Brasil está passando por um aumento de eventos climáticos extremos, como chuvas intensas e secas prolongadas.",
+      "Esses fenômenos têm gerado perdas materiais significativas e pressionado setores produtivos, especialmente a agricultura e a infraestrutura energética.",
+      "Especialistas alertam que a segurabilidade deve ser ampliada para enfrentar os desafios impostos pelas mudanças climáticas."
     ],
-    "id": 2,
+    "categoria": "Proteção Patrimonial",
+    "data": "2026-02-25",
+    "tags": [
+      "mudanças climáticas",
+      "seguro",
+      "resiliência",
+      "eventos extremos"
+    ],
+    "fonte": "Sonho Seguro",
+    "fonte_url": "https://www.sonhoseguro.com.br/2026/02/brasil-entra-em-nova-era-de-extremos-climaticos-e-reforca-papel-do-seguro-frente-as-mudancas-do-clima/",
+    "id": "brasil-enfrenta-nova-era-de-extremos-clim-ticos-e",
     "autor": "Equipe Administradora Mutual",
     "destaque": false
   },
   {
-    "titulo": "SUSEP aprova nova norma para simplificação do cadastro de corretores de seguros",
-    "resumo": "A SUSEP publicou norma que simplifica o processo de cadastro e atualização cadastral dos corretores de seguros, visando maior agilidade e segurança.",
-    "conteudo": "No dia 2025-10-05, a Superintendência de Seguros Privados (SUSEP) aprovou uma resolução que visa modernizar e simplificar os procedimentos cadastrais para corretores de seguros no Brasil. A nova norma reduz a burocracia e permite a atualização de dados por meio de plataforma digital, acelerando o processo e garantindo maior transparência.\n\nCom essa mudança, a SUSEP espera aumentar a eficiência da supervisão e facilitar o acesso dos profissionais ao mercado, atendendo a demandas de agilidade no setor. Além disso, a resolução reforça os requisitos de compliance e adequação às normas vigentes.\n\nO presidente da SUSEP destacou que a iniciativa está alinhada com o plano estratégico da autarquia para 2025, que prevê digitalização e modernização dos processos regulatórios para fomentar o crescimento sustentável do mercado de seguros brasileiro.\n\nA norma já está em vigor e os corretores têm até o final de novembro para realizar suas atualizações por meio do novo sistema eletrônico disponibilizado pela SUSEP.",
-    "categoria": "Resoluções SUSEP",
-    "data": "2025-10-05",
-    "fonte": "https://www.susep.gov.br/noticias/2025/10/05/norma-cadastro-corretores",
-    "tags": [
-      "SUSEP",
-      "Corretores de Seguros",
-      "Cadastro",
-      "Regulação",
-      "Digitalização"
+    "titulo": "Lançamento da Agenda Jurídica do Mercado Segurador 2026",
+    "resumo": "Evento reunirá líderes do setor segurador no Rio de Janeiro para discutir tendências e desafios.",
+    "conteudo": [
+      "O encontro, que ocorrerá na sede da OAB no Rio de Janeiro, contará com a presença de CEOs, diretores jurídicos e autoridades do setor segurador.",
+      "A Agenda Jurídica do Mercado Segurador 2026 visa promover discussões sobre as principais questões legais e regulatórias que impactam o setor.",
+      "Este evento é uma oportunidade para networking e troca de experiências entre os profissionais da área."
     ],
-    "id": 1,
+    "categoria": "Mercado de Seguros",
+    "data": "2026-02-25",
+    "tags": [
+      "evento",
+      "mercado segurador",
+      "OAB",
+      "Rio de Janeiro"
+    ],
+    "fonte": "CQCS",
+    "fonte_url": "https://cqcs.com.br/evento/lancamento-da-agenda-juridica-do-mercado-segurador-2026/",
+    "id": "lan-amento-da-agenda-jur-dica-do-mercado-segurador",
+    "autor": "Equipe Administradora Mutual",
+    "destaque": false
+  },
+  {
+    "titulo": "Novas Regras para Consórcios podem Impactar o Mercado de Seguros",
+    "resumo": "Projeto de lei propõe novas regras para consórcios, incluindo a utilização de seguros como garantia.",
+    "conteudo": [
+      "O deputado Fabiano Cazeca apresentou um projeto de lei que estabelece novas regras para consórcios, com ênfase na utilização de seguros.",
+      "A proposta permite que a administradora do consórcio contrate seguros de vida e invalidez como garantia para os consorciados.",
+      "Os custos das apólices poderão ser cobrados junto com as prestações mensais, facilitando o acesso aos seguros.",
+      "Além disso, o projeto flexibiliza a utilização da carta de crédito, permitindo que consorciados adquiram diferentes bens."
+    ],
+    "categoria": "LC 213/2025",
+    "data": "2026-02-25",
+    "tags": [
+      "Consórcios",
+      "Seguros",
+      "Legislação"
+    ],
+    "fonte": "CQCS",
+    "fonte_url": "https://cqcs.com.br/noticia/consorcios-podem-ter-novas-regras/",
+    "id": "novas-regras-para-cons-rcios-podem-impactar-o-merc",
+    "autor": "Equipe Administradora Mutual",
+    "destaque": false
+  },
+  {
+    "titulo": "Acordo Coletivo 2025: Reajuste e Benefícios para Corretores",
+    "resumo": "Sincor-SP e Sindicato dos Securitários firmam acordo coletivo com reajuste de 4,8% para corretores.",
+    "conteudo": [
+      "O Sincor-SP e o Sindicato dos Securitários firmaram um acordo da Convenção Coletiva 2025 que inclui um reajuste de 4,8% nos salários dos profissionais.",
+      "Além do reajuste, o acordo aborda benefícios como vale refeição, triênio e auxílio creche, entre outros.",
+      "Medidas governamentais foram tomadas para postergar impostos, e é recomendado que os corretores consultem seus contadores.",
+      "Associados ao Sincor-SP podem agendar reuniões online gratuitas para discutir questões contábeis através do CORtabiliza."
+    ],
+    "categoria": "Lei 15.040/2024",
+    "data": "2026-02-25",
+    "tags": [
+      "Acordo Coletivo",
+      "Sincor-SP",
+      "Reajuste"
+    ],
+    "fonte": "Sincor-SP",
+    "fonte_url": "https://sincor.org.br/servicos/acordo-coletivo/",
+    "id": "acordo-coletivo-2025-reajuste-e-benef-cios-para-co",
+    "autor": "Equipe Administradora Mutual",
+    "destaque": false
+  },
+  {
+    "titulo": "Plantão Regional: Orientações e Networking para Corretores",
+    "resumo": "Reuniões online do Sincor-SP oferecem orientações e fortalecem networking entre corretores.",
+    "conteudo": [
+      "O Plantão Regional do Sincor-SP proporciona reuniões online com diretores regionais para corretores de seguros.",
+      "Essas reuniões visam oferecer orientações profissionais e fortalecer o networking entre os participantes.",
+      "Os corretores também têm a oportunidade de tirar dúvidas sobre benefícios e compartilhar desafios enfrentados no dia a dia.",
+      "A Assistente Virtual do Sincor-SP está disponível para auxiliar os associados com informações relevantes."
+    ],
+    "categoria": "Mercado de Seguros",
+    "data": "2026-02-25",
+    "tags": [
+      "Networking",
+      "Sincor-SP",
+      "Corretores"
+    ],
+    "fonte": "Sincor-SP",
+    "fonte_url": "https://sincor.org.br/clubesin/plantao-regional/",
+    "id": "plant-o-regional-orienta-es-e-networking-para-corr",
+    "autor": "Equipe Administradora Mutual",
+    "destaque": false
+  },
+  {
+    "titulo": "Plantão de Comissões oferece Consultorias Gratuitas",
+    "resumo": "Corretores associados ao Sincor-SP têm acesso a consultorias online gratuitas sobre seguros.",
+    "conteudo": [
+      "Os corretores de seguros associados ao Sincor-SP podem participar de consultorias online gratuitas com especialistas em diversos ramos de seguros.",
+      "Essas consultorias são uma oportunidade para os profissionais se atualizarem e tirarem dúvidas sobre o mercado.",
+      "O calendário de encontros está disponível para que os corretores possam escolher as sessões que mais se adequam às suas necessidades.",
+      "A Assistente Virtual do Sincor-SP também está disponível para fornecer informações adicionais e suporte."
+    ],
+    "categoria": "Mercado de Seguros",
+    "data": "2026-02-25",
+    "tags": [
+      "Consultoria",
+      "Sincor-SP",
+      "Corretores"
+    ],
+    "fonte": "Sincor-SP",
+    "fonte_url": "https://sincor.org.br/clubesin/plantao-de-comissoes/",
+    "id": "plant-o-de-comiss-es-oferece-consultorias-gratuita",
+    "autor": "Equipe Administradora Mutual",
+    "destaque": false
+  },
+  {
+    "titulo": "Contribuição Assistencial Patronal para Corretores de Seguros",
+    "resumo": "Empresas corretoras devem recolher R$ 214 para a Contribuição Assistencial Patronal em 2025.",
+    "conteudo": [
+      "Conforme estabelecido no Acordo Coletivo 2025, as empresas corretoras de seguros deverão recolher a Contribuição Assistencial Patronal no valor de R$ 214.",
+      "Essa contribuição é fundamental para auxiliar na manutenção das iniciativas do Sincor-SP, que defende e representa a categoria no Estado de São Paulo.",
+      "Os corretores podem optar por pagar via boleto, cartão de crédito ou Pix, facilitando o processo de quitação.",
+      "Dúvidas podem ser esclarecidas através da Assistente Virtual do Sincor-SP, que oferece suporte em diversas áreas."
+    ],
+    "categoria": "Mercado de Seguros",
+    "data": "2026-02-25",
+    "tags": [
+      "Contribuição",
+      "Sincor-SP",
+      "Corretores"
+    ],
+    "fonte": "Sincor-SP",
+    "fonte_url": "https://sincor.org.br/servicos/contribuicao-assistencial-patronal/",
+    "id": "contribui-o-assistencial-patronal-para-corretores",
     "autor": "Equipe Administradora Mutual",
     "destaque": false
   }
 ];
+
+export { dadosNoticias };

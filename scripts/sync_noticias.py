@@ -25,17 +25,34 @@ def ler_noticias_js():
     with open(NOTICIAS_JS, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Tentar parsear como JSON puro primeiro (formato novo)
-    match = re.search(r'export const noticias = (\[.*\]);', content, re.DOTALL)
-    if not match:
+    todas_noticias = []
+
+    # 1. Tentar ler a seção dadosNoticias (formato JSON puro)
+    dados_match = re.search(r'const dadosNoticias\s*=\s*(\[.*?\]);', content, re.DOTALL)
+    if dados_match:
+        try:
+            dados = json.loads(dados_match.group(1))
+            todas_noticias.extend(dados)
+            print(f"📄 {len(dados)} notícias lidas de dadosNoticias")
+        except json.JSONDecodeError as e:
+            print(f"⚠️ Erro ao parsear dadosNoticias: {e}")
+
+    # 2. Tentar ler a seção export const noticias
+    match = re.search(r'export const noticias\s*=\s*(\[.*?\]);', content, re.DOTALL)
+    if not match and not todas_noticias:
         print("❌ Não encontrou array de notícias")
         return []
+    
+    if not match:
+        return todas_noticias
 
     js_array = match.group(1)
 
     # Tentar JSON direto
     try:
-        return json.loads(js_array)
+        js_noticias = json.loads(js_array)
+        todas_noticias.extend(js_noticias)
+        return todas_noticias
     except json.JSONDecodeError:
         pass
 
@@ -76,10 +93,12 @@ def ler_noticias_js():
     js_array = js_array.replace(':!0', ':true').replace(':!1', ':false')
 
     try:
-        return json.loads(js_array)
+        js_noticias = json.loads(js_array)
+        todas_noticias.extend(js_noticias)
+        return todas_noticias
     except json.JSONDecodeError as e:
-        print(f"❌ Erro ao parsear noticias.js: {e}")
-        return []
+        print(f"❌ Erro ao parsear seção JS do noticias.js: {e}")
+        return todas_noticias if todas_noticias else []
 
 
 def gerar_noticias_json(noticias):
