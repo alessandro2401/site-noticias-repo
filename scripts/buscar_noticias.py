@@ -635,6 +635,23 @@ def main():
     # Gerar RSS
     gerar_rss(noticias_existentes)
 
+    # Sincronizar dados: atualizar noticias.json e bundle JS
+    print("\n🔄 Sincronizando dados para o frontend...")
+    try:
+        from sync_noticias import main as sync_main
+        sync_main()
+    except Exception as e:
+        print(f"⚠️  Erro na sincronização: {e}")
+        # Fallback: tentar importar do diretório correto
+        try:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location("sync_noticias", os.path.join(os.path.dirname(__file__), 'sync_noticias.py'))
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+            mod.main()
+        except Exception as e2:
+            print(f"❌ Falha na sincronização: {e2}")
+
     print()
     print("=" * 60)
     print("✅ MUTUAL NEWS HUB — ATUALIZAÇÃO CONCLUÍDA!")

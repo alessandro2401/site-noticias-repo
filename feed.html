@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed de Notícias — Administradora Mutual</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate" type="application/rss+xml" title="Notícias - Administradora Mutual" href="/rss.xml">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0D47A1, #1565C3);
+            color: white;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .header-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo {
+            width: 36px;
+            height: 36px;
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .header-subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-home {
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+
+        .btn-home:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .btn-rss {
+            background: #FF6600;
+            color: white;
+        }
+
+        .btn-rss:hover {
+            background: #e55b00;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1565C3, #0D47A1);
+            color: white;
+            padding: 48px 24px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 24px;
+        }
+
+        .rss-url-box {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 12px;
+            padding: 16px 24px;
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .rss-url-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+            outline: none;
+        }
+
+        .rss-url-box button {
+            background: white;
+            color: #0D47A1;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .rss-url-box button:hover {
+            background: #e3f2fd;
+        }
+
+        .rss-url-box button.copied {
+            background: #4caf50;
+            color: white;
+        }
+
+        /* Stats */
+        .stats {
+            max-width: 900px;
+            margin: -20px auto 0;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0D47A1;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* Filtros */
+        .filters {
+            max-width: 900px;
+            margin: 24px auto 0;
+            padding: 0 24px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #cbd5e1;
+            background: white;
+            color: #475569;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: #0D47A1;
+            color: #0D47A1;
+        }
+
+        .filter-btn.active {
+            background: #0D47A1;
+            color: white;
+            border-color: #0D47A1;
+        }
+
+        /* Feed */
+        .feed {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 0 24px 48px;
+        }
+
+        .feed-item {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            transition: all 0.2s;
+            border-left: 4px solid transparent;
+        }
+
+        .feed-item:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            border-left-color: #0D47A1;
+        }
+
+        .feed-item-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .feed-item-category {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .cat-lei { background: #fef3c7; color: #92400e; }
+        .cat-lc { background: #dbeafe; color: #1e40af; }
+        .cat-susep { background: #d1fae5; color: #065f46; }
+        .cat-cnsp { background: #ede9fe; color: #5b21b6; }
+        .cat-mercado { background: #fce7f3; color: #9d174d; }
+        .cat-protecao { background: #e0f2fe; color: #0369a1; }
+        .cat-default { background: #f1f5f9; color: #475569; }
+
+        .feed-item-date {
+            font-size: 12px;
+            color: #94a3b8;
+            white-space: nowrap;
+        }
+
+        .feed-item h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .feed-item h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .feed-item h3 a:hover {
+            color: #0D47A1;
+        }
+
+        .feed-item p {
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .feed-item-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .feed-item-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: #f1f5f9;
+            color: #64748b;
+            font-size: 11px;
+        }
+
+        .feed-item-source {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .feed-item-source a {
+            color: #0D47A1;
+            text-decoration: none;
+        }
+
+        .feed-item-source a:hover {
+            text-decoration: underline;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 60px 24px;
+            color: #94a3b8;
+        }
+
+        .empty-state svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 24px;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px 24px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e2e8f0;
+            border-top-color: #0D47A1;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 22px; }
+            .stats { grid-template-columns: 1fr; }
+            .feed-item-header { flex-direction: column; gap: 8px; }
+            .rss-url-box { flex-direction: column; }
+            .rss-url-box input { text-align: center; }
+            .header-actions { gap: 8px; }
+            .btn { padding: 6px 12px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="header-left">
+                <img src="/favicon-32.png" alt="Logo" class="header-logo">
+                <div>
+                    <div class="header-title">Administradora Mutual</div>
+                    <div class="header-subtitle">Central de Notícias</div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="/" class="btn btn-home">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Página Inicial
+                </a>
+                <a href="/rss.xml" class="btn btn-rss" target="_blank">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+                    RSS XML
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Feed de Notícias</h1>
+        <p>Acompanhe as últimas notícias sobre mercado de seguros e proteção patrimonial mutualista, atualizadas automaticamente dos principais portais do Brasil.</p>
+        <div class="rss-url-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.7)"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+            <input type="text" value="https://noticias.administradoramutual.com.br/rss.xml" readonly id="rss-url">
+            <button onclick="copyRSS()" id="copy-btn">Copiar URL</button>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number" id="stat-total">—</div>
+            <div class="stat-label">Notícias no Feed</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="stat-categories">—</div>
+            <div class="stat-label">Categorias</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="stat-sources">—</div>
+            <div class="stat-label">Fontes Monitoradas</div>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filters" id="filters"></div>
+
+    <!-- Feed -->
+    <div class="feed" id="feed">
+        <div class="loading">
+            <div class="spinner"></div>
+            <p>Carregando notícias...</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Administradora Mutual — <a href="/">Voltar à Página Inicial</a> | <a href="/rss.xml" target="_blank">Feed RSS (XML)</a></p>
+    </footer>
+
+    <script>
+        let allNoticias = [];
+        let activeFilter = 'Todas';
+
+        // Copiar URL do RSS
+        function copyRSS() {
+            const input = document.getElementById('rss-url');
+            input.select();
+            navigator.clipboard.writeText(input.value).then(() => {
+                const btn = document.getElementById('copy-btn');
+                btn.textContent = 'Copiado!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copiar URL';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Determinar classe CSS da categoria
+        function getCategoryClass(cat) {
+            if (!cat) return 'cat-default';
+            const lower = cat.toLowerCase();
+            if (lower.includes('lei 15')) return 'cat-lei';
+            if (lower.includes('lc 213')) return 'cat-lc';
+            if (lower.includes('susep')) return 'cat-susep';
+            if (lower.includes('cnsp')) return 'cat-cnsp';
+            if (lower.includes('mercado')) return 'cat-mercado';
+            if (lower.includes('proteção') || lower.includes('protecao')) return 'cat-protecao';
+            return 'cat-default';
+        }
+
+        // Formatar data
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            try {
+                let d;
+                if (dateStr.includes('-')) {
+                    d = new Date(dateStr + 'T12:00:00');
+                } else if (dateStr.includes('/')) {
+                    const parts = dateStr.split('/');
+                    d = new Date(parts[2], parts[1] - 1, parts[0], 12);
+                } else {
+                    return dateStr;
+                }
+                return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+            } catch {
+                return dateStr;
+            }
+        }
+
+        // Renderizar notícias
+        function renderNoticias(noticias) {
+            const feed = document.getElementById('feed');
+
+            if (!noticias || noticias.length === 0) {
+                feed.innerHTML = `
+                    <div class="empty-state">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                        <p>Nenhuma notícia encontrada para este filtro.</p>
+                    </div>`;
+                return;
+            }
+
+            feed.innerHTML = noticias.map(n => {
+                const catClass = getCategoryClass(n.categoria);
+                const tags = (n.tags || []).slice(0, 4).map(t => `<span class="tag">${t}</span>`).join('');
+                const fonte = n.fonte_nome
+                    ? `<span class="feed-item-source">Fonte: <a href="${n.fonte || '#'}" target="_blank" rel="noopener">${n.fonte_nome}</a></span>`
+                    : (n.fonte ? `<span class="feed-item-source">Fonte: <a href="${n.fonte}" target="_blank" rel="noopener">${n.fonte}</a></span>` : '');
+                const id = n.id;
+                const link = typeof id === 'number' ? `/#/noticia/${id}` : `/#/noticia/${id}`;
+
+                return `
+                    <article class="feed-item">
+                        <div class="feed-item-header">
+                            <span class="feed-item-category ${catClass}">${n.categoria || 'Geral'}</span>
+                            <span class="feed-item-date">${formatDate(n.data)}</span>
+                        </div>
+                        <h3><a href="${link}">${n.titulo || 'Sem título'}</a></h3>
+                        <p>${n.resumo || ''}</p>
+                        <div class="feed-item-footer">
+                            <div class="feed-item-tags">${tags}</div>
+                            ${fonte}
+                        </div>
+                    </article>`;
+            }).join('');
+        }
+
+        // Renderizar filtros
+        function renderFilters(noticias) {
+            const categories = ['Todas', ...new Set(noticias.map(n => n.categoria).filter(Boolean))];
+            const filtersEl = document.getElementById('filters');
+
+            filtersEl.innerHTML = categories.map(cat =>
+                `<button class="filter-btn ${cat === activeFilter ? 'active' : ''}" onclick="filterBy('${cat}')">${cat}</button>`
+            ).join('');
+        }
+
+        // Filtrar por categoria
+        function filterBy(cat) {
+            activeFilter = cat;
+            const filtered = cat === 'Todas' ? allNoticias : allNoticias.filter(n => n.categoria === cat);
+            renderNoticias(filtered);
+            renderFilters(allNoticias);
+        }
+
+        // Atualizar estatísticas
+        function updateStats(noticias) {
+            document.getElementById('stat-total').textContent = noticias.length;
+            const categories = new Set(noticias.map(n => n.categoria).filter(Boolean));
+            document.getElementById('stat-categories').textContent = categories.size;
+            document.getElementById('stat-sources').textContent = '25';
+        }
+
+        // Carregar dados
+        async function loadData() {
+            try {
+                const response = await fetch('/noticias.json?t=' + Date.now());
+                if (!response.ok) throw new Error('Erro ao carregar');
+                allNoticias = await response.json();
+
+                // Ordenar por data (mais recente primeiro)
+                allNoticias.sort((a, b) => {
+                    const parseDate = (d) => {
+                        if (!d) return new Date(0);
+                        if (d.includes('-')) return new Date(d);
+                        if (d.includes('/')) {
+                            const p = d.split('/');
+                            return new Date(p[2], p[1]-1, p[0]);
+                        }
+                        return new Date(0);
+                    };
+                    return parseDate(b.data) - parseDate(a.data);
+                });
+
+                updateStats(allNoticias);
+                renderFilters(allNoticias);
+                renderNoticias(allNoticias);
+            } catch (err) {
+                document.getElementById('feed').innerHTML = `
+                    <div class="empty-state">
+                        <p>Erro ao carregar notícias. Tente novamente mais tarde.</p>
+                    </div>`;
+            }
+        }
+
+        // Iniciar
+        loadData();
+    </script>
+</body>
+</html>
