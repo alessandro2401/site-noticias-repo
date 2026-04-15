@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Administradora Mutual</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #1565c0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .login-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .logo-area {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .logo-icon {
+            width: 64px;
+            height: 64px;
+            background: #1a237e;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .logo-icon svg { width: 36px; height: 36px; fill: white; }
+        .logo-area h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a237e;
+            letter-spacing: 0.05em;
+        }
+        .logo-area p {
+            font-size: 0.8rem;
+            color: #666;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+        }
+        .access-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f0f4ff;
+            border: 1px solid #c5cae9;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: #3949ab;
+            font-weight: 500;
+        }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #333;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-wrapper svg {
+            position: absolute;
+            left: 0.875rem;
+            width: 18px;
+            height: 18px;
+            color: #999;
+            pointer-events: none;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem 0.875rem 0.75rem 2.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #333;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        .form-group input:focus { border-color: #1a237e; }
+        .toggle-password {
+            position: absolute;
+            right: 0.875rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+            display: flex;
+        }
+        .toggle-password svg { width: 18px; height: 18px; }
+        .btn-login {
+            width: 100%;
+            padding: 0.875rem;
+            background: #1a237e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            margin-top: 0.5rem;
+        }
+        .btn-login:hover { background: #283593; }
+        .btn-login:active { transform: scale(0.99); }
+        .btn-login:disabled { background: #9fa8da; cursor: not-allowed; }
+        .error-msg {
+            display: none;
+            background: #ffebee;
+            border: 1px solid #ef9a9a;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: #c62828;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .footer-text {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <div class="logo-area">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                </svg>
+            </div>
+            <h1>MUTUAL</h1>
+            <p>Administradora Mutual</p>
+        </div>
+        <div class="access-badge">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            Acesso restrito a usuários autorizados
+        </div>
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <div class="input-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    <input type="email" id="email" placeholder="seu@email.com.br" required autocomplete="email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <div class="input-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                    <input type="password" id="password" placeholder="••••••••••••" required autocomplete="current-password">
+                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                        <svg id="eyeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <button type="submit" class="btn-login" id="btnLogin">Entrar no Portal</button>
+            <div class="error-msg" id="errorMsg">E-mail ou senha incorretos. Verifique suas credenciais.</div>
+        </form>
+        <p class="footer-text">Administradora Mutual &mdash; Acesso exclusivo para usuários autorizados.</p>
+    </div>
+    <script src="auth.js"></script>
+    <script>
+        // Se já estiver autenticado, redireciona para index
+        if (authManager.isAuthenticated()) {
+            window.location.href = 'index.html';
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const btn = document.getElementById('btnLogin');
+            const errorMsg = document.getElementById('errorMsg');
+
+            btn.disabled = true;
+            btn.textContent = 'Verificando...';
+            errorMsg.style.display = 'none';
+
+            setTimeout(() => {
+                const result = authManager.login(email, password);
+                if (result.success) {
+                    btn.textContent = 'Acesso liberado!';
+                    authManager.redirectAfterLogin();
+                } else {
+                    errorMsg.style.display = 'block';
+                    btn.disabled = false;
+                    btn.textContent = 'Entrar no Portal';
+                }
+            }, 400);
+        }
+
+        function togglePassword() {
+            const input = document.getElementById('password');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+    </script>
+</body>
+</html>
