@@ -4,19 +4,9 @@
  */
 const AUTHORIZED_USERS = [
     {
-        email: 'alessandro@pizzolatto.com.br',
-        password: 'Mmb@2026br$',
-        name: 'Alessandro Pizzolatto'
-    },
-    {
-        email: 'junio.tosta@alphanacional.com.br',
-        password: 'Mmb@2026br$',
-        name: 'Junio Tosta'
-    },
-    {
-        email: 'adriele.roque@grupommb.com',
-        password: 'Mmb@2026br$',
-        name: 'Adriele Roque'
+        email: 'moderador@grupommb.com',
+        password: 'Sou@2026br',
+        name: 'Moderador'
     }
 ];
 
